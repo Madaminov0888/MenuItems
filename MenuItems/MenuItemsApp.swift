@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct MenuItemsApp: App {
+    @StateObject private var vm: MainViewModel = MainViewModel()
+    
+    
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("MenuItems", systemImage: "photo.badge.plus.fill") {
             ContentView()
+                .environmentObject(vm)
+        }
+        .defaultSize(width: 300, height: 300)
+        .defaultLaunchBehavior(.presented)
+        .menuBarExtraStyle(.window)
+        
+        
+        Settings {
+            SettingsView()
         }
     }
 }
